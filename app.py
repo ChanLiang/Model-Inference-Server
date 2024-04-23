@@ -8,7 +8,7 @@ monkey.patch_all()
 
 
 def get_algo_result(input):
-    # put your algorithm here
+    ''' The inference logic of the algorithm. '''
     return "good!"
 
 @route("/")
@@ -18,7 +18,11 @@ def hello():
 
 @route("/v1/req", method="POST")
 def title_service():
-    """ 请求服务 """
+    """ 
+    Process the user request, 
+    perform algorithmic inference, 
+    and then return the results in JSON format 
+    """
     startTime = time.time()
     data = json.loads(request.body.read())
     text = base64.b64decode(data["data"])
@@ -32,7 +36,7 @@ def title_service():
     return generateReturnJson(res, executionTime, 200)
     
 def generateReturnJson(result, executeTime, retCode, errMsg=""):
-    """ 返回Json格式 """
+    """ Package the algorithm results into JSON format. """
     
     return {
         "format": "json",
