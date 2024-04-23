@@ -8,6 +8,7 @@ monkey.patch_all()
 
 
 def get_algo_result(input):
+    # put your algorithm here
     return "good!"
 
 @route("/")
